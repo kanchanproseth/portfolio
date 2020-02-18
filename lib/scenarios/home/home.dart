@@ -19,17 +19,14 @@ class _HomeState extends State<Home> {
   static const _kDuration = const Duration(milliseconds: 300);
   static const _kCurve = Curves.ease;
   final _kArrowColor = Colors.black.withOpacity(0.8);
+  var titleItems = ["Project", "Certificate", "Profile"];
+  var selectedPageTitle;
 
   List<BubbleBottomBarItem> bottomBarItems = [
     BubbleBottomBarItem(
         title: Text("Project", style: TextStyling.blackCupertino.subtitle),
         icon: Icon(FontAwesomeIcons.suitcase, color: Colors.white),
         activeIcon: Icon(FontAwesomeIcons.suitcase, color: Colors.black),
-        backgroundColor: Colors.white),
-    BubbleBottomBarItem(
-        title: Text("Resume", style: TextStyling.blackCupertino.subtitle),
-        icon: Icon(FontAwesomeIcons.handPaper, color: Colors.white),
-        activeIcon: Icon(FontAwesomeIcons.handPaper, color: Colors.black),
         backgroundColor: Colors.white),
     BubbleBottomBarItem(
         title: Text("Certificate", style: TextStyling.blackCupertino.subtitle),
@@ -50,11 +47,6 @@ class _HomeState extends State<Home> {
       constraints: const BoxConstraints.expand(),
       child: new FlutterLogo(colors: Colors.blue),
     ),
-    new ConstrainedBox(
-      constraints: const BoxConstraints.expand(),
-      child:
-          new FlutterLogo(style: FlutterLogoStyle.stacked, colors: Colors.red),
-    ),
     Certificate(),
     Profile(),
   ];
@@ -64,6 +56,7 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     _currentIndex = 0;
+    selectedPageTitle = titleItems[0];
   }
 
   void changePage(int index) {
@@ -74,6 +67,7 @@ class _HomeState extends State<Home> {
                     duration: _kDuration,
                     curve: _kCurve,
                   );
+      selectedPageTitle = titleItems[index];
     });
   }
 
@@ -89,7 +83,7 @@ class _HomeState extends State<Home> {
             color: Colors.white,
           ),
         ),
-        title: Text("Profile"),
+        title: Text(selectedPageTitle),
       ),
       backgroundColor: Colors.black,
       body: PageView.builder(

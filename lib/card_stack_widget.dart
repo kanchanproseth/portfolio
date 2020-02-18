@@ -3,8 +3,8 @@ import 'dart:math';
 
 
 class CardAspectRatio{
-  static const cardAspectRatio = 5.0 / 10.0;
-  static const widgetAspectRatio = cardAspectRatio * 1.5 ;
+  static const cardAspectRatio = 300.0 / 500.0;
+  static const widgetAspectRatio = cardAspectRatio * 1.5  ;
 }
 
 
@@ -36,14 +36,14 @@ class _CardScrollWidgetState extends State<CardScrollWidget> {
         var width = contraints.maxWidth;
         var height = contraints.maxHeight;
 
-        var safeWidth = width - 1 * padding;
-        var safeHeight = height - 1 * padding;
+        var safeWidth = width - (1 * padding);
+        var safeHeight = height - (1 * padding);
 
         var heightOfPrimaryCard = safeHeight;
         var widthOfPrimaryCard = heightOfPrimaryCard * CardAspectRatio.cardAspectRatio;
 
         var primaryCardLeft = safeWidth - widthOfPrimaryCard;
-        var horizontalInset = primaryCardLeft / 3;
+        var horizontalInset = primaryCardLeft / 4;
 
         List<Widget> cardList = new List();
 

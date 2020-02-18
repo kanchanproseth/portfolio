@@ -3,6 +3,7 @@ import '../../utils/main_assets.dart';
 import '../../utils/text_style.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
 class Profile extends StatelessWidget {
   const Profile({
     Key key,
@@ -39,7 +40,9 @@ class Profile extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                     RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       child: new Icon(
                         FontAwesomeIcons.facebook,
                         color: Colors.white,
@@ -148,5 +151,15 @@ class Profile extends StatelessWidget {
         ],
       ),
     );
+  }
+
+
+  _launchURL(String urlString) async {
+    var url = urlString;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
