@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../utils/main_assets.dart';
-import '../../utils/text_style.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/assets/assets.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../utils/text_style.dart';
 
-
-class Profile extends StatelessWidget {
-  const Profile({
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({
     Key key,
   }) : super(key: key);
 
@@ -41,7 +41,7 @@ class Profile extends StatelessWidget {
                 children: <Widget>[
                     RawMaterialButton(
                       onPressed: () {
-
+                        _launchURL('https://www.facebook.com/botra.seth1');
                       },
                       child: new Icon(
                         FontAwesomeIcons.facebook,
@@ -53,7 +53,9 @@ class Profile extends StatelessWidget {
                       padding: const EdgeInsets.all(5.0),
                     ),
                    RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _launchURL('https://www.linkedin.com/in/kan-chanproseth/');
+                      },
                       child: new Icon(
                         FontAwesomeIcons.linkedin,
                         color: Colors.white,
@@ -62,7 +64,9 @@ class Profile extends StatelessWidget {
                       shape: new CircleBorder(),
                       padding: const EdgeInsets.all(5.0),
                     ), RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _launchURL('https://www.instagram.com/bothra_seth/');
+                      },
                       child: new Icon(
                         FontAwesomeIcons.instagram,
                         color: Colors.white,
@@ -84,7 +88,7 @@ class Profile extends StatelessWidget {
       height: 100,
       child: ClipRRect(
         borderRadius: new BorderRadius.circular(50.0),
-        child: Image.asset(AssetsPath.profileImage),
+        child: Image.asset(ImageAssets.profileImage),
       ),
     );
   }
@@ -96,13 +100,12 @@ class Profile extends StatelessWidget {
         textAlign: TextAlign.center,
         text: TextSpan(children: [
           TextSpan(
-              text: "Hello there!\n",
-              style: TextStyling.whiteCupertino.headline),
-          TextSpan(text: "My name is Kan Chanproseth.\n"),
-          TextSpan(text: "_____________________________\n"),
+              text: "Hello there!\n",style: TextStyle(color: Colors.white)),
+          TextSpan(text: "My name is Kan Chanproseth.\n",style: TextStyle(color: Colors.white)),
+          TextSpan(text: "_____________________________\n",style: TextStyle(color: Colors.white)),
           TextSpan(
               text: "iOS | Flutter | Android",
-              style: TextStyling.whiteCupertino.subtitle),
+              style: TextStyle(color: Colors.white)),
         ]),
       ),
     );
@@ -121,15 +124,14 @@ class Profile extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text("About\n",
-              textAlign: TextAlign.center,
-              style: TextStyling.whiteCupertino.headline),
+              textAlign: TextAlign.center,style: TextStyle(color: Colors.white)),
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(children: [
               TextSpan(
                   text:
                       "Experienced iOS Developer with a demonstrated history of working in the computer software industry. Skilled in Mobile Application Development such as Android and iOS Development, Java and spring framework. Strong engineering professional with a Year 4 focused in Software Development at Norton University which is include iOS, Android, Java, C# and Other fundamental stuff in Software Development. I also achieved top student Honor award and certificate of appreciate from Norton University.",
-                  style: TextStyle())
+                  style: TextStyle(color: Colors.white))
             ]),
           ),
           Padding(
@@ -140,8 +142,7 @@ class Profile extends StatelessWidget {
               color: Colors.black,
               child: Text(
                 "More",
-                style: TextStyling.whiteCupertino.display1,
-              ),
+                style: TextStyle(color: Colors.white)),
               onPressed: () {},
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0),
@@ -154,7 +155,7 @@ class Profile extends StatelessWidget {
   }
 
 
-  _launchURL(String urlString) async {
+  void _launchURL(String urlString) async {
     var url = urlString;
     if (await canLaunch(url)) {
       await launch(url);

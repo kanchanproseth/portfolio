@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../profile/profile.dart';
+import 'package:portfolio/scenarios/certificate/certificate_screen.dart';
+import 'package:portfolio/scenarios/profile/profile_screen.dart';
+import 'package:portfolio/scenarios/project/project_screen.dart';
 import '../../utils/text_style.dart';
-import '../certificate/certificate.dart';
 
-class Home extends StatefulWidget {
-  const Home({
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({
     Key key,
   }) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex;
   static const _kDuration = const Duration(milliseconds: 300);
   static const _kCurve = Curves.ease;
@@ -43,12 +44,9 @@ class _HomeState extends State<Home> {
   final _controller = new PageController();
 
   final List<Widget> _pages = <Widget>[
-    new ConstrainedBox(
-      constraints: const BoxConstraints.expand(),
-      child: new FlutterLogo(colors: Colors.blue),
-    ),
-    Certificate(),
-    Profile(),
+  ProjectScreen(),
+    CertificateScreen(),
+    ProfileScreen(),
   ];
 
   @override
